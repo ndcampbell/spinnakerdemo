@@ -1,11 +1,8 @@
 sudo: enabled
 dist: trusty
 language: go
-before_install:
-  - sudo apt-get -qq update 
-  - sudo apt-get install ruby ruby-dev build-essential -y
-  - sudo gem install --no-ri --no-rdoc fpm
 install: 
-  - go build -x -o build/spinnakerdemo
-  - fpm -s dir -t deb -n spinnakerdemo -v 0.0.${TRAVIS_BUILD_NUMBER} --architecture=amd64 build/
+  - go build -x -o bin/spinnakerdemo
+  - sudo gem install --no-ri --no-rdoc fpm
+  - fpm -s dir -t deb -n spinnakerdemo -v 0.0.${TRAVIS_BUILD_NUMBER} bin/
 
