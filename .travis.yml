@@ -3,6 +3,6 @@ dist: trusty
 language: go
 install: 
   - go build -x -o bin/spinnakerdemo
-  - sudo gem install --no-ri --no-rdoc fpm
+  - gem install --no-ri --no-rdoc fpm
   - fpm -s dir -t deb -n spinnakerdemo -v 0.0.${TRAVIS_BUILD_NUMBER} bin/
 
