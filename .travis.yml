@@ -1,7 +1,7 @@
 language: go
 before_install:
   - sudo apt-get -qq update 
-  - sudo apt-get install ruby ruby-dev rubygems build-essential -y
+  - sudo apt-get install ruby ruby-dev build-essential -y
   - sudo gem install --no-ri --no-rdoc fpm
 install: 
   - go build -x -o build/spinnakerdemo
