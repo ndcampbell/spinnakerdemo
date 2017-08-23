@@ -1,5 +1,5 @@
 language: go
-install: go build
+install: go build -o bin/spinnakerdemo
 deploy:
   provider: gcs
   access_key_id: GOOG62BSRD5QM3UNWRK4
@@ -8,3 +8,5 @@ deploy:
   bucket: spinnakerdemo-artifacts
   on:
     repo: ndcampbell/spinnakerdemo
+  skip_cleanup: true
+  local-dir: bin
