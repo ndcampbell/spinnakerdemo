@@ -1,10 +1,9 @@
 language: go
-install: go build -o bin/spinnakerdemo
-deploy:
-  provider: gcs
-  access_key_id: GOOG62BSRD5QM3UNWRK4
-  secret_access_key:
-    secure: UncibcR1zjazKA0WCQzFQsO+WLBt5yDAYX2v8Y9L/OcJn73EoehFaZj4OI81rKwBNtuVSJoTd33pSFcyFSnuR8Ln9E9vjSe717GYHe+OkR7ORFHdrQoUYyI7SYXwkLLDWReviJYlaWEaQzGJCeLaILep+EelNfvA4VslOQSU9Gods23nfV8qg8YQyVg9E+m60V42wnOpqAc7A+Nz2gt+iM7a5H4oFrb/0hUBbE1+jpajDJEsOU6B/konYKmUFB6Kw+Yp9C8qwxHoqEmaWmIWahPfHJOCVOf8JmfK79Xzee2C2lkiLTKdMIx5eyWJRn0p4Ku4UWEL+jQTCl1mxa7nrsweU0m6m8EmOeAVrN2sHjbWT9XHoqeAt9z2Hd1jTYIXd7WZNIJjI2nq0YLmab1lZa6MshEIXdbzJMnw43UDf8q7V2uW3QCktTb3WTFSk49ZIgus0OeIY8cR/zpJmUJEUNjTx3j0elQk4Whpd+lb3PdhIL+loKh78AYcmqHExpK/lLR7YrBpI6bAv18Qz/GX6jmGzcEJlXdl3b2948kdSBlOQ8tMYMYUMMQBC0yVmzhSSsEWzhSyugo+g4P1sx9whuT8QxHkMyJ/HisC3UM+6v6Lkh7pDy5nWoIkTHSgpF/F5vVF4zq61scrixH9Chi/Hbb46tbvQyDcPS6ke24x8FE=
-  bucket: spinnakerdemo-artifacts
-  skip_cleanup: true
-  acl: public-read
+before_install:
+  - sudo apt-get -qq update 
+  - sudo apt-get install ruby ruby-dev rubygems build-essential -y
+  - sudo gem install --no-ri --no-rdoc fpm
+install: 
+  - go build -x -o build/spinnakerdemo
+  - fpm -s dir -t deb -n spinnakerdemo -v 0.0.${TRAVIS_BUILD_NUMBER} --architecture=amd64 build/
+
