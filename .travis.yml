@@ -2,9 +2,9 @@ sudo: enabled
 dist: trusty
 language: go
 install:
-- go build -x -o bin/spinnakerdemo
+- go build -x -o build/usr/local/bin/spinnakerdemo
 - gem install --no-ri --no-rdoc fpm
-- fpm -s dir -t deb -n spinnakerdemo -v ${TRAVIS_BUILD_NUMBER} bin/
+- fpm -s dir -t deb -n spinnakerdemo -v ${TRAVIS_BUILD_NUMBER} ./build=/
 deploy:
   provider: packagecloud
   repository: debs
