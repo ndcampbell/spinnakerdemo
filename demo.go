@@ -10,7 +10,7 @@ const index = `
 <html>
 	<head>
 	</head>
-	<body style="background-color:blue;">
+	<body style="background-color:red;">
 		<center>
 		<img src="https://secure.meetupstatic.com/photos/event/9/a/highres_436080154.jpeg">
 		<h1>Hello!</h1>
